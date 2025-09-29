@@ -38,7 +38,20 @@ namespace BR_Gokart_idopontfoglalo__Egyeni_kisprojekt_2025_09_22
             public string vnev { get; set; }
             public string knev { get; set; }
             public DateTime szul { get; set; }
-            public bool elmult => (DateTime.Now.Date - szul.Date).TotalDays >= 18 * 365;
+            public string elmult
+            {
+                get
+                {
+                    if ((DateTime.Now.Date - szul.Date).TotalDays >= 18 * 365)
+                    {
+                        return "igen";
+                    }
+                    else 
+                    { 
+                        return "nem"; 
+                    }
+                }
+            }
             public string azon
             {
                 get
@@ -61,6 +74,22 @@ namespace BR_Gokart_idopontfoglalo__Egyeni_kisprojekt_2025_09_22
                         sb.Append(ch);
                 }
                 return sb.ToString().Normalize(NormalizationForm.FormC);// = Odon
+            }
+        }
+
+        static void kiiratas(List<Ember> list)
+        {
+            Console.WriteLine($"{"Versenyző azonosító",-35}|{"Név",-30}|{"Születés",-11}|{"18+", -4}|Email");
+            Console.WriteLine("-------------------------------------------------------------------------------------------------------------");
+            for (int i = 0; i < list.Count; i++)
+            {
+                Console.WriteLine(i);
+                Console.WriteLine($"{list[i].azon,-35}|{list[i].vnev + " " +list[i].knev,-30}|{list[i].szul:yyyy.MM.dd.}|{list[i].elmult,-4}|{list[i].email}");
+                if ((i + 1) % 20 == 0)
+                {
+                    Console.WriteLine("-------Folytatáshoz nyomjon ENTER-T-------");
+                    Console.ReadLine();
+                }
             }
         }
 
@@ -97,7 +126,7 @@ namespace BR_Gokart_idopontfoglalo__Egyeni_kisprojekt_2025_09_22
             {
                 var vnev = nevek[rnd.Next(nevek.Length)];
                 var knev = nevek2[rnd.Next(nevek2.Length)];
-                int ev = rnd.Next(1950, 2011);
+                int ev = rnd.Next(1970, 2016);
                 int ho = rnd.Next(1, 13);
                 int nap = rnd.Next(1, DateTime.DaysInMonth(ev, ho) + 1);
                 var szul = new DateTime(ev, ho, nap);
@@ -108,10 +137,7 @@ namespace BR_Gokart_idopontfoglalo__Egyeni_kisprojekt_2025_09_22
                     szul = szul
                 });
             }
-            foreach (var i in versenyzok)
-            {
-                Console.WriteLine($"{i.vnev}, {i.knev}, {i.szul:yyyy. MM. dd.}, {i.elmult}, {i.azon}, {i.email}");
-            }
+            kiiratas(versenyzok);
 
             Console.ReadLine();
         }
