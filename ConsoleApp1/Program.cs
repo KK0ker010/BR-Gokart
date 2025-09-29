@@ -71,7 +71,7 @@ namespace BR_Gokart_idopontfoglalo__Egyeni_kisprojekt_2025_09_22
             Console.WriteLine($"{palya.nev}\n{palya.cim}\n{palya.tel}\n{palya.web}");
 
 
-            StreamReader be = new StreamReader("vezeteknevek.txt");
+            StreamReader be = new StreamReader("../../vezeteknevek.txt");
             string sor = be.ReadLine();
             string[] nevek = sor.Split(',');
             for (int i = 0; i < nevek.Length; i++)
@@ -79,7 +79,7 @@ namespace BR_Gokart_idopontfoglalo__Egyeni_kisprojekt_2025_09_22
                 nevek[i] = nevek[i].Replace(" ", "").Replace("'", "");
             }
 
-            StreamReader be2 = new StreamReader("keresztnevek.txt");
+            StreamReader be2 = new StreamReader("../../keresztnevek.txt");
             string sor2 = be2.ReadLine();
             string[] nevek2 = sor2.Split(',');
             for (int i = 0; i < nevek2.Length; i++)
