@@ -83,7 +83,6 @@ namespace BR_Gokart_idopontfoglalo__Egyeni_kisprojekt_2025_09_22
             Console.WriteLine("-------------------------------------------------------------------------------------------------------------");
             for (int i = 0; i < list.Count; i++)
             {
-                Console.WriteLine(i);
                 Console.WriteLine($"{list[i].azon,-35}|{list[i].vnev + " " +list[i].knev,-30}|{list[i].szul:yyyy.MM.dd.}|{list[i].elmult,-4}|{list[i].email}");
                 if ((i + 1) % 20 == 0)
                 {
